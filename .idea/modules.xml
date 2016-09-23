@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/JFRAnalyzer.iml" filepath="$PROJECT_DIR$/.idea/JFRAnalyzer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/taz-jfr-parser.iml" filepath="$PROJECT_DIR$/taz-jfr-parser.iml" />
     </modules>
   </component>
 </project>
