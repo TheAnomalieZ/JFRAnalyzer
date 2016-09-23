@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 
 /**
- * Created by mani on 9/23/16.
+ * Created by Maninesan on 9/23/16.
  */
 public abstract class EventHandler {
     public IView view;

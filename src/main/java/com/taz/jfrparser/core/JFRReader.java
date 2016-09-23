@@ -1,4 +1,4 @@
-package com.taz.jfrparser;
+package com.taz.jfrparser.core;
 
 import com.jrockit.mc.flightrecorder.FlightRecording;
 import com.jrockit.mc.flightrecorder.FlightRecordingLoader;
@@ -7,7 +7,7 @@ import com.jrockit.mc.flightrecorder.spi.IView;
 import java.io.File;
 
 /**
- * Created by mani on 9/23/16.
+ * Created by Maninesan on 9/23/16.
  */
 public class JFRReader {
 
@@ -26,5 +26,9 @@ public class JFRReader {
     public void readJFR(String filepath){
         recording = FlightRecordingLoader.loadFile(new File(filepath));
         view = recording.createView();
+    }
+
+    public IView getJFRRecording(){
+        return view;
     }
 }

@@ -1,10 +1,8 @@
 package com.taz.jfrparser;
 
+import com.taz.jfrparser.core.JFRReader;
 import java.io.IOException;
 
-/**
- * Created by mani on 9/23/16.
- */
 public class Application {
 
     private static JFRReader jfrReader;
@@ -13,7 +11,6 @@ public class Application {
     public static void main(String[] args) throws IOException {
 
         jfrReader = JFRReader.getInstance();
-
 
     }
 }
