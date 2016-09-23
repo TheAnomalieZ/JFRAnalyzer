@@ -1,11 +1,14 @@
 package com.taz.jfrparser;
 
+import com.taz.jfrparser.core.JFRReader;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by  Maninesan on 9/23/16.
@@ -17,15 +20,14 @@ public class GUI extends JFrame {
     private JButton memoryAnalyzeButton = new JButton();
     private JButton cpuAnalyzeButton = new JButton();
     private JTextArea list1 = new JTextArea();
+    private ArrayList<String> filepaths = new ArrayList<String>();
     private JButton refreshFileListButton;
-
     private JFileChooser chooser = new JFileChooser();
 
-
+    private JFRReader jfrReader;
 
     public GUI() {
-
-
+        jfrReader = JFRReader.getInstance();
         JScrollPane scrollPane = new JScrollPane(list1);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setBounds(20,50,450,200);
@@ -74,6 +76,7 @@ public class GUI extends JFrame {
                 for (File file : files)
                     try {
                         list1.append(file.getCanonicalPath()+" \n");
+                        filepaths.add(file.getCanonicalPath());
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }
@@ -84,6 +87,7 @@ public class GUI extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
                 System.out.println(e.getActionCommand());
+
             }
         });
 
@@ -91,6 +95,8 @@ public class GUI extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
                 System.out.println(e.getActionCommand());
+                if(jfrReader != null)
+                    jfrReader.readJFR(filepaths,"CPU Load");
             }
         });
 

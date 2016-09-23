@@ -8,13 +8,13 @@ import com.taz.jfrparser.core.JFREvent;
 import java.util.ArrayList;
 
 public class CPULoadHandler extends EventHandler {
-    public ArrayList<JFREvent> eventList;
-    public CPULoadHandler(IView view, ArrayList<JFREvent> eventList){
+    public ArrayList<CPULoadEvent> eventList;
+    public CPULoadHandler(IView view){
         super(view,"CPU Load");
-        this.eventList = eventList;
+        eventList = new ArrayList<CPULoadEvent>();
     }
 
-    public void getEventSeries() {
+    public ArrayList<CPULoadEvent> getEventSeries() {
         for (IEvent event : view) {
             if(EVENT_TYPE.equals(event.getEventType().getName())){
                 CPULoadEvent cpuLoadEvent = new CPULoadEvent();
@@ -29,5 +29,7 @@ public class CPULoadHandler extends EventHandler {
                 eventList.add(cpuLoadEvent);
             }
         }
+        return eventList;
     }
+
 }

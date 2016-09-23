@@ -15,7 +15,6 @@ public abstract class EventHandler {
         this.view = view;
         this.EVENT_TYPE = eventType;
     }
-    public abstract void getEventSeries();
 
     @Override
     public String toString(){
