@@ -16,17 +16,16 @@ public class JFRReader {
 
     private ArrayList<IView> viewList;
     private FlightRecording recording;
-    private static JFRReader jfrReader;
-    private CSVWriter csvWriter;
+    private static JFRReader jfrReader = new JFRReader();
+    private static CSVWriter csvWriter;
 
 
     public static JFRReader getInstance() {
+        csvWriter = CSVWriter.getInstance();
         return jfrReader;
     }
 
     private JFRReader() {
-        jfrReader = new JFRReader();
-        csvWriter = CSVWriter.getInstance();
     }
 
     public void readJFR(ArrayList<String> filepaths, String eventType){
