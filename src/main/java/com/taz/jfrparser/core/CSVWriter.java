@@ -9,14 +9,13 @@ import java.util.ArrayList;
  */
 public class CSVWriter {
 
-    private static CSVWriter csvWriter;
+    private static CSVWriter csvWriter = new CSVWriter();
 
     public static CSVWriter getInstance() {
         return csvWriter;
     }
 
     private CSVWriter() {
-        csvWriter = new CSVWriter();
     }
 
     public void printCPUOutput(ArrayList<CPULoadEvent> eventList){

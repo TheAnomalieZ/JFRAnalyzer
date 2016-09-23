@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class JFRReader {
 
-    private ArrayList<IView> viewList;
+    private ArrayList<IView> viewList = new ArrayList<IView>();
     private FlightRecording recording;
     private static JFRReader jfrReader = new JFRReader();
     private static CSVWriter csvWriter;
