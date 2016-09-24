@@ -1,6 +1,7 @@
 package com.taz.jfrparser.core;
 
 import com.taz.jfrparser.cpuanalyzer.CPULoadEvent;
+import com.taz.jfrparser.gcanalyzer.MemEvent;
 
 import java.util.ArrayList;
 
@@ -28,5 +29,14 @@ public class CSVWriter {
         }
     }
 
+    public void printGCOutput(ArrayList<MemEvent> eventList){
+        for(int i=0;i<eventList.size();i++){
+            try{
+//                System.out.println(eventList.get(i).getEndTimestamp()-eventList.get(i-1).getStartTimestamp()+"  "+eventList.get(i).getJvmUser());
+            }catch(IndexOutOfBoundsException e){
+
+            }
+        }
+    }
 
 }
