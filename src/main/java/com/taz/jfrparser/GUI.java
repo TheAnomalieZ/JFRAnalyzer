@@ -19,22 +19,24 @@ public class GUI extends JFrame {
     private static JPanel panel1;
     private JButton memoryAnalyzeButton = new JButton();
     private JButton cpuAnalyzeButton = new JButton();
-    private JTextArea list1 = new JTextArea();
+    private JTextArea textArea = new JTextArea();
     private ArrayList<String> filepaths = new ArrayList<String>();
-    private JButton refreshFileListButton;
+    private JButton refreshFileListButton = new JButton();
     private JFileChooser chooser = new JFileChooser();
 
     private JFRReader jfrReader;
 
     public GUI() {
         jfrReader = JFRReader.getInstance();
-        JScrollPane scrollPane = new JScrollPane(list1);
+        JScrollPane scrollPane = new JScrollPane(textArea);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setBounds(20,50,450,200);
-//        list1.setBounds(20,50,450,200);
+//        textArea.setBounds(20,50,450,200);
         // uploadAFileButton setbounds
-        uploadAFileButton.setBounds(500, 100, 200,100);
+        uploadAFileButton.setBounds(500, 50, 200,100);
         uploadAFileButton.setText("Upload JFRs");
+        refreshFileListButton.setBounds(500, 150, 200,100);
+        refreshFileListButton.setText("Refresh");
         memoryAnalyzeButton.setBounds(150, 300, 200,100);
         memoryAnalyzeButton.setText("Memory");
         cpuAnalyzeButton.setBounds(400, 300, 200,100);
@@ -52,7 +54,8 @@ public class GUI extends JFrame {
         panel1.add(uploadAFileButton);
         panel1.add(memoryAnalyzeButton);
         panel1.add(cpuAnalyzeButton);
-//        panel1.add(list1);
+        panel1.add(refreshFileListButton);
+//        panel1.add(textArea);
         panel1.add(scrollPane);
         add(panel1);
 
@@ -75,7 +78,7 @@ public class GUI extends JFrame {
                 File[] files = chooser.getSelectedFiles();
                 for (File file : files)
                     try {
-                        list1.append(file.getCanonicalPath()+" \n");
+                        textArea.append(file.getCanonicalPath()+" \n");
                         filepaths.add(file.getCanonicalPath());
                     } catch (IOException e1) {
                         e1.printStackTrace();
@@ -97,6 +100,15 @@ public class GUI extends JFrame {
                 System.out.println(e.getActionCommand());
                 if(jfrReader != null)
                     jfrReader.readJFR(filepaths,"CPU Load");
+            }
+        });
+
+        refreshFileListButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+            {
+                System.out.println(e.getActionCommand());
+                textArea.setText("");
+                filepaths = new ArrayList<String>();
             }
         });
 

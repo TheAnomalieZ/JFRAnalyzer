@@ -1,1 +1,6 @@
 .idea/*
+target/*
+taz-jfr-parser.iml
+JFRAnalyzer.iml
+repo/*
+jmc_version.properties
