@@ -21,7 +21,7 @@ public class StateIdentifier {
         this.eventMap = eventMap;
     }
 
-    public void configureStates() throws IOException {
+    public ArrayList<Integer> configureStates() {
         long lastMemoryDif = 0;
         long lastGCTimeDif = -1;
         long tempLastUsedMem = 0;
@@ -53,56 +53,54 @@ public class StateIdentifier {
             count++;
         }
 
-//        String csv = "output.csv";
-//        CSVWriter writer = new CSVWriter(new FileWriter(csv));
-//        ArrayList<String> A = new ArrayList<String>();
-        java.io.File courseCSV = new java.io.File("benchmark.csv");
-
-        //create PrintWriter object on new File object
-        java.io.PrintWriter outfile = null;
-        try {
-            outfile = new java.io.PrintWriter(courseCSV);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-
-
-        for(Integer num : stateSequence){
-            System.out.print(num-1+" ");
-            outfile.write(num-1 + "\n");
-        }
-        outfile.close();
-//
-//        String[] stockArr = new String[A.size()];
-//        stockArr = A.toArray(stockArr);
-//        writer.append(stockArr);
-//        writer.close();
+        return (ArrayList<Integer>) stateSequence;
     }
 
     private void identifyState(long lastMemDiff, long lastGCTimeDiff, long currMemDiff, long currGCTimeDiff) {
         int state = 0;
         if(currGCTimeDiff>=lastGCTimeDiff && currMemDiff>=lastMemDiff) {
             state =1;
-            stateSequence.add(1);
+            stateSequence.add(0);
         }
         if(currGCTimeDiff>lastGCTimeDiff && currMemDiff<lastMemDiff) {
             state =2;
-            stateSequence.add(2);
+            stateSequence.add(1);
         }
         if(currGCTimeDiff<lastGCTimeDiff && currGCTimeDiff<lastGCTimeDiff) {
             state =3;
-            stateSequence.add(3);
+            stateSequence.add(2);
         }
         if(currGCTimeDiff<lastGCTimeDiff && currGCTimeDiff>lastGCTimeDiff) {
             state =4;
-            stateSequence.add(4);
+            stateSequence.add(3);
         }
 
     }
-    public static void writeCSV(String line) {
 
-        //create new File object
-
-    }
 }
+
+    //        String csv = "output.csv";
+//        CSVWriter writer = new CSVWriter(new FileWriter(csv));
+//        ArrayList<String> A = new ArrayList<String>();
+//    java.io.File courseCSV = new java.io.File("benchmark.csv");
+//
+//    //create PrintWriter object on new File object
+//    java.io.PrintWriter outfile = null;
+//try {
+//        outfile = new java.io.PrintWriter(courseCSV);
+//        } catch (FileNotFoundException e) {
+//        e.printStackTrace();
+//        }
+//
+//
+//
+//        for(Integer num : stateSequence){
+//        System.out.print(num-1+" ");
+//        outfile.write(num-1 + "\n");
+//        }
+//        outfile.close();
+//
+//        String[] stockArr = new String[A.size()];
+//        stockArr = A.toArray(stockArr);
+//        writer.append(stockArr);
+//        writer.close();

@@ -14,7 +14,7 @@ public class GCMemoryHandler extends EventHandler {
         this.eventMap = eventMap;
     }
 
-    public void getEventSeries() {
+    public void configureGCMemory() {
         for (IEvent event : view) {
             if (EVENT_TYPE.equals(event.getEventType().getName())) {
                 if(event.getValue("when").toString().equals("Before GC")){

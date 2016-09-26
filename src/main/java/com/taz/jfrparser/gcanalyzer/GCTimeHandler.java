@@ -14,7 +14,7 @@ public class GCTimeHandler extends EventHandler{
         this.eventMap = eventMap;
     }
 
-    public void getEventSeries() {
+    public void configureEventGCTime() {
         for (IEvent event : view) {
             if(EVENT_TYPE.equals(event.getEventType().getName())){
                 MemEvent memEvent = new MemEvent();
