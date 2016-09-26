@@ -20,8 +20,8 @@ public class CSVWriter {
     }
 
 
-    public void printCPUOutput(ArrayList<CPULoadEvent> eventList){
-        File courseCSV = new File("CPULoad.csv");
+    public void printCPUOutput(ArrayList<CPULoadEvent> eventList, String index){
+        File courseCSV = new File("CPULoad"+index+".csv");
 
         //create PrintWriter object on new File object
         PrintWriter outfile = null;
@@ -41,8 +41,8 @@ public class CSVWriter {
         outfile.close();
     }
 
-    public void printGCOutputOne(ArrayList<Integer> stateSequence){
-        File courseCSV = new File("GCStates.csv");
+    public void printGCOutputOne(ArrayList<Integer> stateSequence, String index){
+        File courseCSV = new File("GCStates"+index+".csv");
         //create PrintWriter object on new File object
         PrintWriter outfile = null;
         try {
