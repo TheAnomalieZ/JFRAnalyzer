@@ -5,16 +5,11 @@ import com.jrockit.mc.flightrecorder.FlightRecordingLoader;
 import com.jrockit.mc.flightrecorder.spi.IView;
 import com.taz.jfrparser.cpuanalyzer.CPULoadEvent;
 import com.taz.jfrparser.cpuanalyzer.CPULoadHandler;
-import com.taz.jfrparser.gcanalyzer.GCTimeHandler;
 import com.taz.jfrparser.gcanalyzer.GCTimeSeriesModel;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- * Created by Maninesan on 9/23/16.
- */
 public class JFRReader {
 
     private ArrayList<IView> viewList = new ArrayList<IView>();

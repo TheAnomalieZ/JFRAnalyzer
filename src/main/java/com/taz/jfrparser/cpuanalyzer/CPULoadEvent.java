@@ -2,9 +2,6 @@ package com.taz.jfrparser.cpuanalyzer;
 
 import com.taz.jfrparser.core.JFREvent;
 
-/**
- * Created by Maninesan on 9/15/16.
- */
 public class CPULoadEvent extends JFREvent {
 
     private String jvmUser;

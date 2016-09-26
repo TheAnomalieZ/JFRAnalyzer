@@ -7,9 +7,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/**
- * Created by  Maninesan on 9/26/16.
- */
 public class GCTimeSeriesModel {
     private IView view;
     private Map<Long,MemEvent> eventMap;

@@ -3,7 +3,6 @@ package com.taz.jfrparser.cpuanalyzer;
 import com.jrockit.mc.flightrecorder.spi.IEvent;
 import com.jrockit.mc.flightrecorder.spi.IView;
 import com.taz.jfrparser.core.EventHandler;
-import com.taz.jfrparser.core.JFREvent;
 
 import java.util.ArrayList;
 

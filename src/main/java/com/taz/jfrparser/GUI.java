@@ -10,9 +10,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- * Created by  Maninesan on 9/23/16.
- */
 public class GUI extends JFrame {
 
     private static JButton uploadAFileButton = new JButton();

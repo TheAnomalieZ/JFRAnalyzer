@@ -8,9 +8,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-/**
- * Created by  Maninesan on 9/23/16.
- */
 public class CSVWriter {
 
     private static CSVWriter csvWriter = new CSVWriter();

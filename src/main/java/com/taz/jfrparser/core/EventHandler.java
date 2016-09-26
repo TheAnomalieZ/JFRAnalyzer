@@ -1,12 +1,7 @@
 package com.taz.jfrparser.core;
 
 import com.jrockit.mc.flightrecorder.spi.IView;
-import java.util.ArrayList;
 
-
-/**
- * Created by Maninesan on 9/23/16.
- */
 public abstract class EventHandler {
     public IView view;
     public String EVENT_TYPE;

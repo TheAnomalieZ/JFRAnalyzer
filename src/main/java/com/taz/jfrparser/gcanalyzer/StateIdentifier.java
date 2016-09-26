@@ -1,7 +1,5 @@
 package com.taz.jfrparser.gcanalyzer;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -78,29 +76,3 @@ public class StateIdentifier {
     }
 
 }
-
-    //        String csv = "output.csv";
-//        CSVWriter writer = new CSVWriter(new FileWriter(csv));
-//        ArrayList<String> A = new ArrayList<String>();
-//    java.io.File courseCSV = new java.io.File("benchmark.csv");
-//
-//    //create PrintWriter object on new File object
-//    java.io.PrintWriter outfile = null;
-//try {
-//        outfile = new java.io.PrintWriter(courseCSV);
-//        } catch (FileNotFoundException e) {
-//        e.printStackTrace();
-//        }
-//
-//
-//
-//        for(Integer num : stateSequence){
-//        System.out.print(num-1+" ");
-//        outfile.write(num-1 + "\n");
-//        }
-//        outfile.close();
-//
-//        String[] stockArr = new String[A.size()];
-//        stockArr = A.toArray(stockArr);
-//        writer.append(stockArr);
-//        writer.close();
