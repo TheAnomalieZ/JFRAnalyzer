@@ -28,8 +28,8 @@ public class GUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(textArea);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setBounds(20,50,450,200);
-//        textArea.setBounds(20,50,450,200);
-        // uploadAFileButton setbounds
+
+        // Buttons setbounds
         uploadAFileButton.setBounds(500, 50, 200,100);
         uploadAFileButton.setText("Upload JFRs");
         refreshFileListButton.setBounds(500, 150, 200,100);
@@ -38,12 +38,14 @@ public class GUI extends JFrame {
         memoryAnalyzeButton.setText("Memory");
         cpuAnalyzeButton.setBounds(400, 300, 200,100);
         cpuAnalyzeButton.setText("CPU");
+
         panel1 = new JPanel(new BorderLayout());
         memoryAnalyzeButton.setEnabled(false);
         cpuAnalyzeButton.setEnabled(false);
+
         // JPanel bounds
         panel1.setBounds(0, 0, 800, 400);
-//        panel1.setBackground(Color.BLACK);
+
         //JFrame layout
         this.setLayout(null);
 
@@ -119,10 +121,6 @@ public class GUI extends JFrame {
                 cpuAnalyzeButton.setEnabled(false);
             }
         });
-
-
-
-
 
     }
 

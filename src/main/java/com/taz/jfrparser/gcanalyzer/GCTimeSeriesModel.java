@@ -34,4 +34,8 @@ public class GCTimeSeriesModel {
 
         return stateSequence;
     }
+
+    public void getOutputTwo(){
+
+    }
 }
