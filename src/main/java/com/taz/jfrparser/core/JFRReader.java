@@ -5,8 +5,11 @@ import com.jrockit.mc.flightrecorder.FlightRecordingLoader;
 import com.jrockit.mc.flightrecorder.spi.IView;
 import com.taz.jfrparser.cpuanalyzer.CPULoadEvent;
 import com.taz.jfrparser.cpuanalyzer.CPULoadHandler;
+import com.taz.jfrparser.gcanalyzer.GCTimeHandler;
+import com.taz.jfrparser.gcanalyzer.GCTimeSeriesModel;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -28,9 +31,9 @@ public class JFRReader {
     private JFRReader() {
     }
 
-    public void readJFR(ArrayList<String> filepaths, String eventType){
-        for (String filepath:filepaths) {
-            recording = FlightRecordingLoader.loadFile(new File(filepath));
+    public void readJFR(ArrayList<String> filePaths, String eventType){
+        for (String filePath:filePaths) {
+            recording = FlightRecordingLoader.loadFile(new File(filePath));
             IView view = recording.createView();
             viewList.add(view);
             if(eventType == "CPU Load"){
@@ -47,12 +50,15 @@ public class JFRReader {
 
     public void getCPUEvents(IView view){
         CPULoadHandler cpuLoadHandler = new CPULoadHandler(view);
-        ArrayList<CPULoadEvent> eventlist = cpuLoadHandler.getEventSeries();
-        csvWriter.printCPUOutput(eventlist);
+        ArrayList<CPULoadEvent> eventList = cpuLoadHandler.getEventSeries();
+        csvWriter.printCPUOutput(eventList);
 
     }
 
-    public void getGCEvents(IView view){
+    public void getGCEvents(IView view) {
+        GCTimeSeriesModel gcModel = new GCTimeSeriesModel(view);
+        ArrayList<Integer> stateSequence = gcModel.getOuputOne();
+        csvWriter.printGCOutputOne(stateSequence);
 
     }
 }

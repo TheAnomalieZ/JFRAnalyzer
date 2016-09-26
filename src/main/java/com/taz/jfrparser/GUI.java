@@ -90,7 +90,8 @@ public class GUI extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
                 System.out.println(e.getActionCommand());
-
+                if(jfrReader != null)
+                    jfrReader.readJFR(filepaths,"GC");
             }
         });
 

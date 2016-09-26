@@ -44,14 +44,22 @@ public class CSVWriter {
         outfile.close();
     }
 
-    public void printGCOutput(ArrayList<MemEvent> eventList){
-        for(int i=0;i<eventList.size();i++){
-            try{
-//                System.out.println(eventList.get(i).getEndTimestamp()-eventList.get(i-1).getStartTimestamp()+"  "+eventList.get(i).getJvmUser());
-            }catch(IndexOutOfBoundsException e){
-
-            }
+    public void printGCOutputOne(ArrayList<Integer> stateSequence){
+        File courseCSV = new File("GCStates.csv");
+        //create PrintWriter object on new File object
+        PrintWriter outfile = null;
+        try {
+            outfile = new PrintWriter(courseCSV);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
+
+        for(int i=0;i<stateSequence.size();i++){
+                System.out.println(stateSequence.get(i));
+                outfile.write(stateSequence.get(i));
+            }
+
+        outfile.close();
     }
 
 }
