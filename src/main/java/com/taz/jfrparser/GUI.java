@@ -39,6 +39,8 @@ public class GUI extends JFrame {
         cpuAnalyzeButton.setBounds(400, 300, 200,100);
         cpuAnalyzeButton.setText("CPU");
         panel1 = new JPanel(new BorderLayout());
+        memoryAnalyzeButton.setEnabled(false);
+        cpuAnalyzeButton.setEnabled(false);
         // JPanel bounds
         panel1.setBounds(0, 0, 800, 400);
 //        panel1.setBackground(Color.BLACK);
@@ -80,6 +82,10 @@ public class GUI extends JFrame {
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }
+                if(jfrReader != null)
+                    jfrReader.readJFR(filepaths);
+                memoryAnalyzeButton.setEnabled(true);
+                cpuAnalyzeButton.setEnabled(true);
             }
         });
 
@@ -88,7 +94,7 @@ public class GUI extends JFrame {
             {
                 System.out.println(e.getActionCommand());
                 if(jfrReader != null)
-                    jfrReader.readJFR(filepaths,"GC");
+                    jfrReader.getGCEvents();
             }
         });
 
@@ -97,7 +103,7 @@ public class GUI extends JFrame {
             {
                 System.out.println(e.getActionCommand());
                 if(jfrReader != null)
-                    jfrReader.readJFR(filepaths,"CPU Load");
+                    jfrReader.getCPUEvents();
             }
         });
 
@@ -107,6 +113,10 @@ public class GUI extends JFrame {
                 System.out.println(e.getActionCommand());
                 textArea.setText("");
                 filepaths = new ArrayList<String>();
+                if(jfrReader != null)
+                    jfrReader.refreshViewList();
+                memoryAnalyzeButton.setEnabled(false);
+                cpuAnalyzeButton.setEnabled(false);
             }
         });
 
