@@ -7,6 +7,9 @@ import com.taz.jfrparser.cpuanalyzer.CPULoadEvent;
 import com.taz.jfrparser.cpuanalyzer.CPULoadHandler;
 import com.taz.jfrparser.gcanalyzer.GCTimeSeriesModel;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.util.ArrayList;
 
@@ -17,8 +20,10 @@ public class JFRReader {
     private static JFRReader jfrReader = new JFRReader();
     private static CSVWriter csvWriter;
 
+    private static final Logger logger = LoggerFactory.getLogger(JFRReader.class);
 
     public static JFRReader getInstance() {
+        logger.debug("");
         csvWriter = CSVWriter.getInstance();
         return jfrReader;
     }
@@ -28,6 +33,7 @@ public class JFRReader {
 
     public void readJFR(ArrayList<String> filePaths){
         for (String filePath:filePaths) {
+            logger.info("Loading file"+ filePath);
             recording = FlightRecordingLoader.loadFile(new File(filePath));
             IView view = recording.createView();
             viewList.add(view);
@@ -35,8 +41,13 @@ public class JFRReader {
     }
 
 
-    public ArrayList<IView> getJFRRecording(){
-        return viewList;
+    public ArrayList<IView> getJFRRecording() {
+        if (viewList.size() == 0){
+            logger.warn("No JFR loaded");
+            return null;
+        }else{
+            return viewList;
+        }
     }
 
     public void getCPUEvents(){
@@ -60,6 +71,7 @@ public class JFRReader {
     }
 
     public void refreshViewList(){
+        logger.info("Erase old JFR loadings");
         viewList = new ArrayList<IView>();
     }
 }
