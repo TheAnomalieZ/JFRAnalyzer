@@ -19,12 +19,14 @@ public class JFRReader {
     private FlightRecording recording;
     private static JFRReader jfrReader = new JFRReader();
     private static CSVWriter csvWriter;
+    private static EventHandlerFactory  eventHandlerFactory;
 
     private static final Logger logger = LoggerFactory.getLogger(JFRReader.class);
 
     public static JFRReader getInstance() {
         logger.debug("");
         csvWriter = CSVWriter.getInstance();
+        eventHandlerFactory = new EventHandlerFactory();
         return jfrReader;
     }
 
@@ -51,10 +53,10 @@ public class JFRReader {
     }
 
     public void getCPUEvents(){
+        logger.info("Reading CPU Events");
         for (IView view:viewList) {
-
             String index = Integer.toString(viewList.indexOf(view));
-            CPULoadHandler cpuLoadHandler = new CPULoadHandler(view);
+            CPUHandler cpuLoadHandler = eventHandlerFactory.getCPULoadHandler(view);
             ArrayList<CPULoadEvent> eventList = cpuLoadHandler.getEventSeries();
             csvWriter.printCPUOutput(eventList,index);
 
@@ -62,9 +64,10 @@ public class JFRReader {
     }
 
     public void getGCEvents() {
+        logger.info("Reading GC Events");
         for (IView view:viewList) {
             String index = Integer.toString(viewList.indexOf(view));
-            GCTimeSeriesModel gcModel = new GCTimeSeriesModel(view);
+            GCHandler gcModel = eventHandlerFactory.getGCHandler(view);
             ArrayList<Integer> stateSequence = gcModel.getOuputOne();
             csvWriter.printGCOutputOne(stateSequence, index);
         }

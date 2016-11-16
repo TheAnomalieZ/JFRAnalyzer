@@ -2,11 +2,12 @@ package com.taz.jfrparser.cpuanalyzer;
 
 import com.jrockit.mc.flightrecorder.spi.IEvent;
 import com.jrockit.mc.flightrecorder.spi.IView;
+import com.taz.jfrparser.core.CPUHandler;
 import com.taz.jfrparser.core.EventHandler;
 
 import java.util.ArrayList;
 
-public class CPULoadHandler extends EventHandler {
+public class CPULoadHandler extends EventHandler implements CPUHandler {
     public ArrayList<CPULoadEvent> eventList;
     public CPULoadHandler(IView view){
         super(view,"CPU Load");

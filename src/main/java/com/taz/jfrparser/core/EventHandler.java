@@ -3,12 +3,20 @@ package com.taz.jfrparser.core;
 import com.jrockit.mc.flightrecorder.spi.IView;
 
 public abstract class EventHandler {
-    public IView view;
-    public String EVENT_TYPE;
+    protected IView view;
+    protected String EVENT_TYPE;
 
     public EventHandler(IView view, String eventType){
         this.view = view;
         this.EVENT_TYPE = eventType;
+    }
+
+    public IView getView() {
+        return view;
+    }
+
+    public String getEVENT_TYPE() {
+        return EVENT_TYPE;
     }
 
     @Override

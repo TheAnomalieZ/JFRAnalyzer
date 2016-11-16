@@ -1,14 +1,16 @@
 package com.taz.jfrparser.gcanalyzer;
 
 import com.jrockit.mc.flightrecorder.spi.IView;
+import com.taz.jfrparser.core.EventHandler;
+import com.taz.jfrparser.core.GCHandler;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class GCTimeSeriesModel {
-    private IView view;
+public class GCTimeSeriesModel extends EventHandler implements GCHandler {
+//    private IView view;
     private Map<Long,MemEvent> eventMap;
     private GCTimeHandler gcTimeHandler;
     private GCMemoryHandler gcMemoryHandler;
@@ -16,7 +18,7 @@ public class GCTimeSeriesModel {
     private ArrayList<Integer> stateSequence;
 
     public GCTimeSeriesModel(IView view){
-        this.view = view;
+        super(view,"GC Handler");
         eventMap = new LinkedHashMap<Long, MemEvent>();
 
     }

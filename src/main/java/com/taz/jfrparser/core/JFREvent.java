@@ -1,9 +1,9 @@
 package com.taz.jfrparser.core;
 
 public abstract class JFREvent {
-    long startTimestamp;
-    long endTimestamp;
-    String EVENT_TYPE;
+    protected long startTimestamp;
+    protected long endTimestamp;
+    protected String EVENT_TYPE;
 
     public JFREvent(String eventType) {
         this.EVENT_TYPE = eventType;
